@@ -36,7 +36,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/ETusername"
+        android:id="@+id/ETemail"
         android:layout_width="258dp"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bLogin"
@@ -58,7 +58,7 @@
         android:textSize="14sp" />
 
     <EditText
-        android:id="@+id/ETpassword"
+        android:id="@+id/ETmdp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bLogin"
@@ -66,8 +66,8 @@
         android:layout_margin="0dp"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintLeft_toLeftOf="@+id/editText"
-        app:layout_constraintRight_toRightOf="@+id/editText"
+        app:layout_constraintLeft_toLeftOf="@+id/ETconfirmer"
+        app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
         tools:layout_constraintRight_creator="1"
@@ -75,7 +75,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_marginTop="15dp">
 
         <Button
             android:id="@+id/bLogin"
@@ -89,7 +90,30 @@
             android:onClick="onBtnClick"
             android:text="Se Connecter"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="@+id/editText"
+            app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
+            tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintRight_creator="1" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <Button
+            android:id="@+id/bSinscrire"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="0dp"
+            android:layout_marginRight="0dp"
+            android:layout_weight="1"
+            android:onClick="onBtnClick"
+            android:text="S'inscrire"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
             tools:layout_constraintBottom_creator="1"
             tools:layout_constraintRight_creator="1" />
 

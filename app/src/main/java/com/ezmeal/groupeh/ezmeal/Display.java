@@ -16,9 +16,9 @@ public class Display extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.display);
 
-        String username = getIntent().getStringExtra("username"); //on choppe le username qui vient de l'activité précédente
+        String adremail = getIntent().getStringExtra("adremail"); //on choppe le username qui vient de l'activité précédente
 
         TextView tv = (TextView)findViewById(R.id.TVusername);
-        tv.setText(username);
+        tv.setText(adremail);
     }
 }
