@@ -6,23 +6,71 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:gravity="center"
-    android:weightSum="1">
+    android:weightSum="1"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello,"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="122dp" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:clickable="true"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/TVusername"
-        android:layout_width="wrap_content"
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Bienvenue "
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="141dp"
+            tools:layout_editor_absoluteY="122dp" />
+
+        <TextView
+            android:id="@+id/TVusername"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/EmptyString"
+            android:textSize="24sp"
+            tools:layout_editor_absoluteX="254dp"
+            tools:layout_editor_absoluteY="131dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/bAcceuil"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/EmptyString"
-        android:textSize="24sp"
-        tools:layout_editor_absoluteX="254dp"
-        tools:layout_editor_absoluteY="131dp" />
+        android:onClick="onBtnClick"
+        android:text="Acceuil" />
+
+    <Button
+        android:id="@+id/bChercher"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnClick"
+        android:text="Chercher une recette" />
+
+    <Button
+        android:id="@+id/bPreferences"
+        android:layout_width="276dp"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnClick"
+        android:text="Mes préférences/contraintes" />
+
+    <Button
+        android:id="@+id/bCompte"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnClick"
+        android:text="Mon compte" />
+
+    <Button
+        android:id="@+id/bDeconnecter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="onBtnClick"
+        android:text="Se déconnecter" />
+
 </LinearLayout>

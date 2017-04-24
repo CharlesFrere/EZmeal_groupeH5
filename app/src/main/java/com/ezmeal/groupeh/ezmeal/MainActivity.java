@@ -1,5 +1,6 @@
 package com.ezmeal.groupeh.ezmeal;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,7 +10,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    BDDmanager manager = new BDDmanager(this);
+    BDDmanager manager = new BDDmanager(this);  //construit la db (appelle le constructor)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +21,9 @@ public class MainActivity extends AppCompatActivity {
     public void onBtnClick(View v){
 
         if(v.getId() == R.id.bLogin){
+
+            //showMessage("hello", "gars bonjour pomme oka!");
+
 
             EditText e = (EditText)findViewById(R.id.ETemail); //on choppe ce qui est mit dans le field email
             String stre = e.getText().toString(); //et on le transfo en String
@@ -44,5 +48,14 @@ public class MainActivity extends AppCompatActivity {
             Intent g = new Intent(MainActivity.this, Sinscrire.class); //changement d'activity
             startActivity(g);
         }
+    }
+
+    //SHOW MESSAGE
+    public void showMessage(String titre, String contenu){
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setCancelable(true);
+        builder.setTitle(titre);
+        builder.setMessage(contenu);
+        builder.show();
     }
 }

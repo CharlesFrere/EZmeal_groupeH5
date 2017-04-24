@@ -15,11 +15,12 @@ import android.widget.Toast;
 
 public class Sinscrire extends Activity {
 
-    BDDmanager manager = new BDDmanager(this);
+    BDDmanager manager;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sinscrire);
+        manager = new BDDmanager(this);
     }
 
     public void onBtnClick(View v){
@@ -36,7 +37,7 @@ public class Sinscrire extends Activity {
 
             String prenomstr = prenom.getText().toString();
             String nomstr = nom.getText().toString();
-            //Integer age = age.   To do
+            String agestr = age.getText().toString();
             String emailstr = email.getText().toString();
             String passwordstr = password.getText().toString();
             String confirmerstr = confirmer.getText().toString();
@@ -50,6 +51,7 @@ public class Sinscrire extends Activity {
                 User u = new User();
                 u.setPrenom(prenomstr);
                 u.setNom(nomstr);
+                u.setAge(agestr);
                 u.setEmail(emailstr);
                 u.setMdp(passwordstr);
 

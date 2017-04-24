@@ -6,7 +6,7 @@ package com.ezmeal.groupeh.ezmeal;
 
 public class User {
 
-    String prenom, nom, email, mdp;
+    String prenom, nom, email, mdp, age;
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
@@ -24,6 +24,9 @@ public class User {
         this.mdp = mdp;
     }
 
+    public void setAge(String age) {
+        this.age = age;
+    }
 
     public String getPrenom() {
         return prenom;
@@ -39,5 +42,9 @@ public class User {
 
     public String getMdp() {
         return mdp;
+    }
+
+    public String getAge() {
+        return age;
     }
 }

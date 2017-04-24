@@ -65,7 +65,7 @@
         android:layout_centerHorizontal="true"
         android:layout_margin="0dp"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textPassword"
         app:layout_constraintLeft_toLeftOf="@+id/ETconfirmer"
         app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
         app:layout_constraintTop_toTopOf="parent"
