@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.content.Context;
+import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by elthe on 23-04-17.
@@ -53,11 +55,14 @@ public class BDDmanager extends SQLiteOpenHelper {
         values.put(COLUMN_MDP, u.getMdp());
 
         db.insert(TABLE_NAME, null, values);
-        //long result = db.insert(TABLE_NAME, null, values);
         db.close();
     }
 
     //Création de updateUser()
+    public void updateUser(User u){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+    }
 
 
 
@@ -68,24 +73,46 @@ public class BDDmanager extends SQLiteOpenHelper {
 
         String query = "select email, mdp from "+TABLE_NAME;
         //pose le curseur au résultat de la query
-        Cursor cursor = db.rawQuery(query, null);
+        Cursor c = db.rawQuery(query, null);
         String x, y;
         y = "pas trouvé";
-        if(cursor.moveToFirst()){
+        if(c.moveToFirst()){
             do{
-                x = cursor.getString(0);
+                x = c.getString(c.getColumnIndex(COLUMN_EMAIL));
                 if(x.equals(mail)){
-                    y = cursor.getString(1);
+                    y = c.getString(c.getColumnIndex(COLUMN_MDP));
                     break;
                 }
             }
-            while(cursor.moveToNext());
+            while(c.moveToNext());
         }
-        cursor.close();
+        c.close();
         return y;
-
     }
 
+
+    //Search une data grâce à email
+    public String searchData(String mail, String dataColumn){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String query = "select email, " + dataColumn +" from "+TABLE_NAME;
+        //pose le curseur au résufltat de la query
+        Cursor cu = db.rawQuery(query, null);
+        String x, y;
+        y = "pas trouvé";
+        if(cu.moveToFirst()){
+            do{
+                x = cu.getString(cu.getColumnIndex(COLUMN_EMAIL));
+                if(x.equals(mail)){
+                    y = cu.getString(cu.getColumnIndex(dataColumn));
+                    break;
+                }
+            }
+            while(cu.moveToNext());
+        }
+        cu.close();
+        return y;
+    }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
