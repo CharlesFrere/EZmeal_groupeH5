@@ -72,6 +72,13 @@ public class BDDmanager extends SQLiteOpenHelper {
 
         String query = "UPDATE utilisateur SET PRENOM = '"+u.getPrenom()+"' WHERE EMAIL = '"+email+"'";
         db.execSQL(query);
+        String query2 = "UPDATE utilisateur SET NOM = '"+u.getNom()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query2);
+        String query3 = "UPDATE utilisateur SET AGE = '"+u.getAge()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query3);
+        String query4 = "UPDATE utilisateur SET MDP = '"+u.getMdp()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query4);
+
     }
 
 
