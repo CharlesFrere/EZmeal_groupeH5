@@ -2,6 +2,7 @@ package com.ezmeal.groupeh.ezmeal;
 
 import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -59,9 +60,18 @@ public class BDDmanager extends SQLiteOpenHelper {
     }
 
     //Création de updateUser()
-    public void updateUser(User u){
+    public void updateUser(User u, String email){
         SQLiteDatabase db = this.getReadableDatabase();
+        /*ContentValues values = new ContentValues();
+        values.put(COLUMN_EMAIL, u.getEmail());
+        values.put(COLUMN_PRENOM, u.getPrenom());
+        values.put(COLUMN_NOM, u.getNom());
+        values.put(COLUMN_AGE, u.getAge());
+        values.put(COLUMN_MDP, u.getMdp()); */
 
+
+        String query = "UPDATE utilisateur SET PRENOM = '"+u.getPrenom()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query);
     }
 
 

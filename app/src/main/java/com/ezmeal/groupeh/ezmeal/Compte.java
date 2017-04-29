@@ -98,7 +98,11 @@ public class Compte extends BaseActivity {
                 uMod.setEmail(emailstr);
                 uMod.setMdp(passwordstr);
 
-                myManager.updateUser(uMod);
+                //on a besoin de l'email pour savoir quel utilisateur updater
+                SharedPreferences sharedInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+                String emailDeUser = sharedInfo.getString("userEmail", "userEmail not found");
+
+                myManager.updateUser(uMod, emailDeUser);
 
                 Intent gh = new Intent(Compte.this, Display.class); //changement d'activity
                 startActivity(gh);
