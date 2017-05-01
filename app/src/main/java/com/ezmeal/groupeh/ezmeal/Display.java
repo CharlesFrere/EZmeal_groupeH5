@@ -26,6 +26,12 @@ public class Display extends BaseActivity {
     }
 
     public void onBtnClick(View v) {
+
+        if (v.getId() == R.id.bCatalogue) {
+            Intent ghh = new Intent(Display.this, Catalogue.class); //changement d'activity
+            startActivity(ghh);
+        }
+
         if (v.getId() == R.id.bDeconnecter) {
             Intent gh = new Intent(Display.this, MainActivity.class); //changement d'activity
             startActivity(gh);

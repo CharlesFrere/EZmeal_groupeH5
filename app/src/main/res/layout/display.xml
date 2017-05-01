@@ -39,11 +39,11 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/bAcceuil"
+        android:id="@+id/bCatalogue"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="onBtnClick"
-        android:text="Acceuil" />
+        android:text="Toutes les recettes" />
 
     <Button
         android:id="@+id/bChercher"
