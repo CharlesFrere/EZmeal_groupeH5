@@ -21,7 +21,7 @@ public class Compte extends BaseActivity {
     BDDmanager myManager = new BDDmanager(this);
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.compte);
 

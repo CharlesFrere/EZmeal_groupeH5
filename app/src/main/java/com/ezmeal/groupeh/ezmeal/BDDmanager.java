@@ -43,6 +43,27 @@ public class BDDmanager extends SQLiteOpenHelper {
     private static final String COLUMN_NBR = "nbr";
     private static final String COLUMN_IMAGE = "image";
 
+    //3eme table
+    private static final String TABLE_NAME3 = "contrainte";
+    private static final String COLUMN_EMAIL2 = "email";
+    private static final String COLUMN_CONTRAINTEU = "contrainteu";
+
+    //4eme table
+    private static final String TABLE_NAME4 = "aliments";
+    private static final String COLUMN_ALIMENT = "aliment";
+    private static final String COLUMN_CONTRAINTEA = "contraintea";
+
+    //5eme table
+    private static final String TABLE_NAME5 = "quantité";
+    private static final String COLUMN_ALIMENT2 = "aliment";
+    private static final String COLUMN_NOMR2 = "recette";
+    private static final String COLUMN_QUANTITE = "quantite";
+
+    //6eme table
+    private static final String TABLE_NAME6 = "gout";
+    private static final String COLUMN_ALIMENT3 = "aliment";
+    private static final String COLUMN_EMAIL3 = "email";
+    private static final String COLUMN_GOUT = "gout";
 
 
     public BDDmanager(Context context){
@@ -124,6 +145,36 @@ public class BDDmanager extends SQLiteOpenHelper {
                 COLUMN_MDP + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryB);
+
+        //création de la table contrainte, qui est initIalement vide
+        String queryC =  "CREATE TABLE " + TABLE_NAME3 + "(" +
+                COLUMN_EMAIL2 + " VARCHAR(255) , " +
+                COLUMN_CONTRAINTEU + " VARCHAR(255) " +
+                ");";
+        db.execSQL(queryC);
+
+        //création de la table aliment, qui est initIalement vide
+        String queryD =  "CREATE TABLE " + TABLE_NAME4 + "(" +
+                COLUMN_ALIMENT + " VARCHAR(255) , " +
+                COLUMN_CONTRAINTEA + " VARCHAR(255) " +
+                ");";
+        db.execSQL(queryD);
+
+        //création de la table quantite, qui est initIalement vide
+        String queryE =  "CREATE TABLE " + TABLE_NAME5 + "(" +
+                COLUMN_ALIMENT2 + " VARCHAR(255) , " +
+                COLUMN_NOMR2 + " VARCHAR(255), " +
+                COLUMN_QUANTITE + "VARCHAR(255) " +
+                ");";
+        db.execSQL(queryE);
+
+        //création de la table gout, qui est initIalement vide
+        String queryF =  "CREATE TABLE " + TABLE_NAME6 + "(" +
+                COLUMN_ALIMENT3 + " VARCHAR(255) , " +
+                COLUMN_EMAIL3 + " VARCHAR(255), " +
+                COLUMN_GOUT + "VARCHAR(255) " +
+                ");";
+        db.execSQL(queryF);
     }
 
     //création de insterUser()
@@ -249,6 +300,65 @@ public class BDDmanager extends SQLiteOpenHelper {
         }
         dataCursor.close();
         return listData;
+    }
+
+    public ArrayList<String> getContrainteU(String util){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryC = "SELECT CONTRAINTEU FROM " + TABLE_NAME3 + "WHERE EMAIL2 = " + util;
+        Cursor dataCursora = db.rawQuery(queryC, null);
+        //on choppe les données grâce au curseur et on les met dans une liste
+        ArrayList<String> listDataa = new ArrayList<>();
+        while(dataCursora.moveToNext()){
+            //choppe la valeur de la database en column
+            //et l'ajoute à l'arraylist
+            listDataa.add(dataCursora.getString(dataCursora.getColumnIndex(COLUMN_CONTRAINTEU)));
+        }
+        dataCursora.close();
+        return listDataa;
+    }
+
+    public ArrayList<String> getContrainteA(String alim){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryD = "SELECT CONTRAINTEA FROM " + TABLE_NAME4 +"WHERE ALIMENT = " + alim;
+        Cursor dataCursorb = db.rawQuery(queryD, null);
+        //on choppe les données grâce au curseur et on les met dans une liste
+        ArrayList<String> listDatab = new ArrayList<>();
+        while(dataCursorb.moveToNext()){
+            //choppe la valeur de la database en column
+            //et l'ajoute à l'arraylist
+            listDatab.add(dataCursorb.getString(dataCursorb.getColumnIndex(COLUMN_CONTRAINTEA)));
+        }
+        dataCursorb.close();
+        return listDatab;
+    }
+
+    public ArrayList<String> getAliment(String recette) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryE = "SELECT ALIMENT2 FROM " + TABLE_NAME5 + "WHERE NOMR2 = " + recette;
+        Cursor dataCursorc = db.rawQuery(queryE, null);
+        //on choppe les données grâce au curseur et on les met dans une liste
+        ArrayList<String> listDatac = new ArrayList<>();
+        while (dataCursorc.moveToNext()) {
+            //choppe la valeur de la database en column
+            //et l'ajoute à l'arraylist
+            listDatac.add(dataCursorc.getString(dataCursorc.getColumnIndex(COLUMN_ALIMENT2)));
+        }
+        dataCursorc.close();
+        return listDatac;
+    }
+    public ArrayList<Integer> getPref(String alim , String util) {
+        SQLiteDatabase db = this.getReadableDatabase();
+        String queryF = "SELECT GOUT FROM " + TABLE_NAME6 + "WHERE ALIMENT = " + alim +"AND EMAIL =" + util;
+        Cursor dataCursorc = db.rawQuery(queryF, null);
+        //on choppe les données grâce au curseur et on les met dans une liste
+        ArrayList<Integer> listDatac = new ArrayList<>();
+        while (dataCursorc.moveToNext()) {
+            //choppe la valeur de la database en column
+            //et l'ajoute à l'arraylist
+            listDatac.add(dataCursorc.getInt(dataCursorc.getColumnIndex(COLUMN_GOUT)));
+        }
+        dataCursorc.close();
+        return listDatac;
     }
 
     //Méthode qui renvoie une certaine info(descrption, date,...) d'une recette en fct de son titre.
