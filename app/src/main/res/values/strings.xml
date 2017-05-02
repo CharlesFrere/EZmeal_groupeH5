@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">EZmeal</string>
     <string name="EmptyString" />
+    
+    <string-array name="spinner1">
+        <item name="Fr">Français</item>
+        <item name="En">Englais</item>
+    </string-array>
 </resources>

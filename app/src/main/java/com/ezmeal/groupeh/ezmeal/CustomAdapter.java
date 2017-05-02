@@ -51,7 +51,7 @@ public class CustomAdapter extends ArrayAdapter<String> {
         int k = i+j;
 
         TextView TVduree = (TextView) customView.findViewById(R.id.TVduree);
-        TVcustomDescription.setText(String.valueOf(k));
+        TVduree.setText(String.valueOf(k));
 
         //IVcustom.setImageResource(R.mipmap.cube);
         return customView;

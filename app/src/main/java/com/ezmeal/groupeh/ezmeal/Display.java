@@ -32,6 +32,11 @@ public class Display extends BaseActivity {
             startActivity(ghh);
         }
 
+        if (v.getId() == R.id.bChercher) {
+            Intent ghhg = new Intent(Display.this, Rechercher.class); //changement d'activity
+            startActivity(ghhg);
+        }
+
         if (v.getId() == R.id.bDeconnecter) {
             Intent gh = new Intent(Display.this, MainActivity.class); //changement d'activity
             startActivity(gh);

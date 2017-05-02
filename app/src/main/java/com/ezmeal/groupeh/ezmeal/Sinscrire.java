@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -14,14 +17,18 @@ import android.widget.Toast;
  * Created by elthe on 23-04-17.
  */
 
-public class Sinscrire extends BaseActivity {
+public class Sinscrire extends BaseActivity implements AdapterView.OnItemSelectedListener{
 
     BDDmanager manager;
+    ArrayAdapter adapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sinscrire);
         manager = new BDDmanager(this);
+
+        adapter = ArrayAdapter.createFromResource(this, R.array.spinner1, android.R.layout.simple_spinner_item);
     }
 
     public void onBtnClick(View v){
@@ -67,4 +74,14 @@ public class Sinscrire extends BaseActivity {
         }
     }
 
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
+
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

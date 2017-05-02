@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class BDDmanager extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 18;
+    private static final int DATABASE_VERSION = 22;
     private static final String DATABASE_NAME = "myBDD.db";
     private static final String TABLE_NAME = "utilisateur";
     private static final String COLUMN_ID = "id";
@@ -43,6 +43,7 @@ public class BDDmanager extends SQLiteOpenHelper {
     private static final String COLUMN_NBR = "nbr";
     private static final String COLUMN_IMAGE = "image";
 
+
     //3eme table
     private static final String TABLE_NAME3 = "contrainte";
     private static final String COLUMN_EMAIL2 = "email";
@@ -54,7 +55,7 @@ public class BDDmanager extends SQLiteOpenHelper {
     private static final String COLUMN_CONTRAINTEA = "contraintea";
 
     //5eme table
-    private static final String TABLE_NAME5 = "quantité";
+    private static final String TABLE_NAME5 = "quantite";
     private static final String COLUMN_ALIMENT2 = "aliment";
     private static final String COLUMN_NOMR2 = "recette";
     private static final String COLUMN_QUANTITE = "quantite";
@@ -64,6 +65,8 @@ public class BDDmanager extends SQLiteOpenHelper {
     private static final String COLUMN_ALIMENT3 = "aliment";
     private static final String COLUMN_EMAIL3 = "email";
     private static final String COLUMN_GOUT = "gout";
+
+
 
 
     public BDDmanager(Context context){
@@ -148,31 +151,31 @@ public class BDDmanager extends SQLiteOpenHelper {
 
         //création de la table contrainte, qui est initIalement vide
         String queryC =  "CREATE TABLE " + TABLE_NAME3 + "(" +
-                COLUMN_EMAIL2 + " VARCHAR(255) , " +
+                COLUMN_EMAIL2 + " VARCHAR(255), " +
                 COLUMN_CONTRAINTEU + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryC);
 
         //création de la table aliment, qui est initIalement vide
         String queryD =  "CREATE TABLE " + TABLE_NAME4 + "(" +
-                COLUMN_ALIMENT + " VARCHAR(255) , " +
+                COLUMN_ALIMENT + " VARCHAR(255), " +
                 COLUMN_CONTRAINTEA + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryD);
 
         //création de la table quantite, qui est initIalement vide
         String queryE =  "CREATE TABLE " + TABLE_NAME5 + "(" +
-                COLUMN_ALIMENT2 + " VARCHAR(255) , " +
+                COLUMN_ALIMENT2 + " VARCHAR(255), " +
                 COLUMN_NOMR2 + " VARCHAR(255), " +
-                COLUMN_QUANTITE + "VARCHAR(255) " +
+                COLUMN_QUANTITE + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryE);
 
         //création de la table gout, qui est initIalement vide
         String queryF =  "CREATE TABLE " + TABLE_NAME6 + "(" +
-                COLUMN_ALIMENT3 + " VARCHAR(255) , " +
+                COLUMN_ALIMENT3 + " VARCHAR(255), " +
                 COLUMN_EMAIL3 + " VARCHAR(255), " +
-                COLUMN_GOUT + "VARCHAR(255) " +
+                COLUMN_GOUT + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryF);
     }

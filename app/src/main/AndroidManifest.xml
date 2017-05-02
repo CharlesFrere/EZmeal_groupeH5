@@ -20,6 +20,7 @@
         <activity android:name=".Sinscrire"></activity>
         <activity android:name=".Compte"></activity>
         <activity android:name=".Catalogue" />
+        <activity android:name=".Rechercher" />
     </application>
 
 </manifest>
