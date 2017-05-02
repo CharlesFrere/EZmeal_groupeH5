@@ -44,6 +44,14 @@ public class CustomAdapter extends ArrayAdapter<String> {
         TextView TVcustomDescription = (TextView) customView.findViewById(R.id.TVcustomDescription);
         TVcustomDescription.setText(descriptionFromBDD);
 
+        String prepaFromBDD = myManager.searchData2(RecetteTitre, "Tpreparation");
+        String cuissFromBDD = myManager.searchData2(RecetteTitre, "Tcuisson");
+        int i = Integer.parseInt(prepaFromBDD);
+        int j = Integer.parseInt(cuissFromBDD);
+        int k = i+j;
+
+        TextView TVduree = (TextView) customView.findViewById(R.id.TVduree);
+        TVcustomDescription.setText(String.valueOf(k));
 
         //IVcustom.setImageResource(R.mipmap.cube);
         return customView;
