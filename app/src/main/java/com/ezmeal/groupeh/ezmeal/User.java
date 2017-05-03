@@ -6,7 +6,19 @@ package com.ezmeal.groupeh.ezmeal;
 
 public class User {
 
-    String prenom, nom, email, mdp, age;
+    String prenom, nom, email, mdp, age, langue, nationnalite, sexe;
+
+    public void setLangue(String langue) {
+        this.langue = langue;
+    }
+
+    public void setNationnalite(String nationnalite) {
+        this.nationnalite = nationnalite;
+    }
+
+    public void setSexe(String sexe) {
+        this.sexe = sexe;
+    }
 
     public void setPrenom(String prenom) {
         this.prenom = prenom;
@@ -26,6 +38,18 @@ public class User {
 
     public void setAge(String age) {
         this.age = age;
+    }
+
+    public String getLangue() {
+        return langue;
+    }
+
+    public String getNationnalite() {
+        return nationnalite;
+    }
+
+    public String getSexe() {
+        return sexe;
     }
 
     public String getPrenom() {

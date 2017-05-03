@@ -2,10 +2,12 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     android:orientation="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
     tools:context="com.ezmeal.groupeh.ezmeal.MainActivity">
 
     <RelativeLayout
@@ -18,12 +20,13 @@
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginBottom="65dp"
+            android:layout_marginBottom="47dp"
             android:elevation="0dp"
             android:fontFamily="sans-serif"
             android:text="EZmeal"
             android:textAllCaps="false"
-            android:textSize="36sp"
+            android:textColor="#44a7f5"
+            android:textSize="43sp"
             android:textStyle="bold|italic" />
 
     </RelativeLayout>
@@ -33,11 +36,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Ton Login"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/ETemail"
-        android:layout_width="258dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/bLogin"
         android:layout_alignParentEnd="true"
@@ -55,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:text="Mot de Passe"
-        android:textSize="14sp" />
+        android:textSize="18sp" />
 
     <EditText
         android:id="@+id/ETmdp"
@@ -73,50 +76,37 @@
         tools:layout_constraintRight_creator="1"
         tools:layout_constraintTop_creator="1" />
 
-    <RelativeLayout
+    <Button
+        android:id="@+id/bLogin"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="15dp">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="30dp"
+        android:layout_weight="1"
+        android:onClick="onBtnClick"
+        android:text="Se Connecter"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
-        <Button
-            android:id="@+id/bLogin"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_weight="1"
-            android:onClick="onBtnClick"
-            android:text="Se Connecter"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
-            tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintRight_creator="1" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
+    <Button
+        android:id="@+id/bSinscrire"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="5dp">
-
-        <Button
-            android:id="@+id/bSinscrire"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginLeft="0dp"
-            android:layout_marginRight="0dp"
-            android:layout_weight="1"
-            android:onClick="onBtnClick"
-            android:text="S'inscrire"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
-            tools:layout_constraintBottom_creator="1"
-            tools:layout_constraintRight_creator="1" />
-
-    </RelativeLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_weight="1"
+        android:onClick="onBtnClick"
+        android:text="Pas encore inscrit?"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
+        tools:layout_constraintBottom_creator="1"
+        tools:layout_constraintRight_creator="1" />
 
 </LinearLayout>

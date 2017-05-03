@@ -35,6 +35,7 @@
                     android:fontFamily="sans-serif"
                     android:text="S'inscrire sur EZmeal"
                     android:textAllCaps="false"
+                    android:textColor="#44a7f5"
                     android:textSize="27sp"
                     android:textStyle="bold|italic" />
 
@@ -43,88 +44,52 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="0dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Votre Langue"
-                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/SPlangue"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:spinnerMode="dialog" />
+                    android:layout_margin="0dp"
+                    android:spinnerMode="dropdown" />
+
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="0dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Nationalité"
-                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/SPnationalite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:spinnerMode="dialog" />
+                    android:spinnerMode="dropdown" />
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_margin="0dp"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="2dp"
                 android:layout_marginTop="5dp">
-
-                <TextView
-                    android:id="@+id/textView10"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentStart="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginBottom="5dp"
-                    android:layout_marginLeft="2dp"
-                    android:layout_marginTop="5dp"
-                    android:text="Votre Sexe"
-                    android:textSize="18sp" />
 
                 <Spinner
                     android:id="@+id/SPsexe"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_margin="0dp"
                     android:layout_marginBottom="5dp"
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="5dp"
-                    android:spinnerMode="dialog" />
+                    android:spinnerMode="dropdown" />
             </RelativeLayout>
 
             <EditText
@@ -189,10 +154,11 @@
                     android:layout_marginRight="0dp"
                     android:layout_marginTop="10dp"
                     android:layout_weight="1"
+                    android:backgroundTint="#44a7f5"
                     android:onClick="onBtnClick"
                     android:text="S'inscrire"
+                    android:textColor="#FFFFFF"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintRight_toRightOf="@+id/ETconfirmer"
                     tools:layout_constraintBottom_creator="1"
                     tools:layout_constraintRight_creator="1" />
 

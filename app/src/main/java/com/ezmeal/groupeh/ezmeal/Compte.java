@@ -3,12 +3,16 @@ package com.ezmeal.groupeh.ezmeal;
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -16,9 +20,16 @@ import android.widget.Toast;
  * Created by elthe on 24-04-17.
  */
 
-public class Compte extends BaseActivity {
+public class Compte extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     BDDmanager myManager = new BDDmanager(this);
+
+    ArrayAdapter adapter;
+    Spinner spinner1;
+    ArrayAdapter adapter2;
+    Spinner spinner2;
+    ArrayAdapter adapter3;
+    Spinner spinner3;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -45,10 +56,10 @@ public class Compte extends BaseActivity {
         EditText age = (EditText) findViewById(R.id.ETage);
         age.setText(ageFromBDD);
 
-        String emailFuck = sharedInfo.getString("userEmail", "userEmail not found");
+        //String emailFuck = sharedInfo.getString("userEmail", "userEmail not found");
         //String emailFromBDD = myManager.searchData(emailDeUser, "email");
-        EditText email = (EditText) findViewById(R.id.ETemail);
-        email.setText(emailDeUser);
+        //EditText email = (EditText) findViewById(R.id.ETemail);
+        //email.setText(emailDeUser);
 
         String mdpFromBDD = myManager.searchData(emailDeUser, "mdp");
         EditText mdp = (EditText) findViewById(R.id.ETmdp);
@@ -57,6 +68,42 @@ public class Compte extends BaseActivity {
         String confirmerFromBDD = myManager.searchData(emailDeUser, "mdp");
         EditText confirmer = (EditText) findViewById(R.id.ETconfirmer);
         confirmer.setText(mdpFromBDD);
+
+        //PARTIE SPINNER
+        adapter = ArrayAdapter.createFromResource(this, R.array.spinner1, android.R.layout.simple_spinner_dropdown_item);
+        spinner1 = (Spinner) findViewById(R.id.SPlangue);
+        spinner1.setAdapter(adapter);
+        spinner1.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) Compte.this);
+
+        adapter2 = ArrayAdapter.createFromResource(this, R.array.spinner2, android.R.layout.simple_spinner_dropdown_item);
+        spinner2 = (Spinner) findViewById(R.id.SPnationalite);
+        spinner2.setAdapter(adapter2);
+        spinner2.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) Compte.this);
+
+        adapter3 = ArrayAdapter.createFromResource(this, R.array.spinner3, android.R.layout.simple_spinner_dropdown_item);
+        spinner3 = (Spinner) findViewById(R.id.SPsexe);
+        spinner3.setAdapter(adapter3);
+        spinner3.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) Compte.this);
+
+        String langueFromBDD = myManager.searchData(emailDeUser, "langue");
+        spinner1.setSelection(adapter.getPosition(langueFromBDD));
+
+        String nationnaliteFromBDD = myManager.searchData(emailDeUser, "nationnalite");
+        spinner2.setSelection(adapter2.getPosition(nationnaliteFromBDD));
+
+        String sexeFromBDD = myManager.searchData(emailDeUser, "sexe");
+        spinner3.setSelection(adapter3.getPosition(sexeFromBDD));
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        ((TextView) parent.getChildAt(0)).setTextColor(Color.BLACK);
+        ((TextView) parent.getChildAt(0)).setTextSize(18);
+    }
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
     }
 
 
@@ -75,14 +122,14 @@ public class Compte extends BaseActivity {
             TextView prenom = (EditText)findViewById(R.id.ETprenom);
             TextView nom = (EditText)findViewById(R.id.ETnom);
             TextView age = (EditText)findViewById(R.id.ETage);
-            TextView email = (EditText)findViewById(R.id.ETemail);
+            //TextView email = (EditText)findViewById(R.id.ETemail);
             TextView password = (EditText)findViewById(R.id.ETmdp);
             TextView confirmer = (EditText)findViewById(R.id.ETconfirmer);
 
             String prenomstr = prenom.getText().toString();
             String nomstr = nom.getText().toString();
             String agestr = age.getText().toString();
-            String emailstr = email.getText().toString();
+            //String emailstr = email.getText().toString();
             String passwordstr = password.getText().toString();
             String confirmerstr = confirmer.getText().toString();
 
@@ -95,8 +142,17 @@ public class Compte extends BaseActivity {
                 uMod.setPrenom(prenomstr);
                 uMod.setNom(nomstr);
                 uMod.setAge(agestr);
-                uMod.setEmail(emailstr);
+                //uMod.setEmail(emailstr);
                 uMod.setMdp(passwordstr);
+
+
+                String nationnalitestr = spinner2.getItemAtPosition(spinner2.getSelectedItemPosition()).toString();
+                uMod.setNationnalite(nationnalitestr);
+                String languestr = spinner1.getItemAtPosition(spinner1.getSelectedItemPosition()).toString();
+                uMod.setLangue(languestr);
+                String sexestr = spinner3.getItemAtPosition(spinner3.getSelectedItemPosition()).toString();
+                uMod.setSexe(sexestr);
+
 
                 //on a besoin de l'email pour savoir quel utilisateur updater
                 SharedPreferences sharedInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);

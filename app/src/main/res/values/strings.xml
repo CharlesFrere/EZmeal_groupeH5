@@ -1,9 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
 <resources>
     <string name="app_name">EZmeal</string>
     <string name="EmptyString" />
-    
+
     <string-array name="spinner1">
-        <item name="Fr">Français</item>
-        <item name="En">Englais</item>
+        <item name="Fr">Je parle Français</item>
+        <item name="En">Je parle Englais</item>
+    </string-array>
+
+    <string-array name="spinner2">
+        <item name="Fr">Je suis Français</item>
+        <item name="En">Je suis Belge</item>
+        <item name="Ca">Je suis Canadien</item>
+        <item name="Br">I am British</item>
+    </string-array>
+
+    <string-array name="spinner3">
+        <item name="H">Je suis un Homme</item>
+        <item name="F">Je suis une Femme</item>
     </string-array>
 </resources>

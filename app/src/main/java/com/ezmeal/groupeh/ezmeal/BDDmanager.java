@@ -18,16 +18,19 @@ import java.util.ArrayList;
 
 public class BDDmanager extends SQLiteOpenHelper {
 
-    private static final int DATABASE_VERSION = 22;
+    private static final int DATABASE_VERSION = 32;
     private static final String DATABASE_NAME = "myBDD.db";
     private static final String TABLE_NAME = "utilisateur";
-    private static final String COLUMN_ID = "id";
+    //private static final String COLUMN_ID = "id";
     private static final String COLUMN_PRENOM = "prenom";
     private static final String COLUMN_NOM = "nom";
     private static final String COLUMN_AGE = "age";
     private static final String COLUMN_EMAIL = "email";
     private static final String COLUMN_MDP = "mdp";
-    private static final String TABLE_CREATE = "CREATE TABLE" + TABLE_NAME;
+    private static final String COLUMN_LANGUE = "langue";
+    private static final String COLUMN_NATIONNALITE = "nationnalite";
+    private static final String COLUMN_SEXE = "sexe";
+    //private static final String TABLE_CREATE = "CREATE TABLE" + TABLE_NAME;
 
     //2eme table
     private static final String TABLE_NAME2 = "recette";
@@ -145,7 +148,10 @@ public class BDDmanager extends SQLiteOpenHelper {
                 COLUMN_PRENOM + " VARCHAR(255), " +
                 COLUMN_NOM + " VARCHAR(255), " +
                 COLUMN_AGE + " VARCHAR(255), " +
-                COLUMN_MDP + " VARCHAR(255) " +
+                COLUMN_MDP + " VARCHAR(255), " +
+                COLUMN_LANGUE + " VARCHAR(255), " +
+                COLUMN_NATIONNALITE + " VARCHAR(255), " +
+                COLUMN_SEXE + " VARCHAR(255) " +
                 ");";
         db.execSQL(queryB);
 
@@ -189,6 +195,9 @@ public class BDDmanager extends SQLiteOpenHelper {
         values.put(COLUMN_NOM, u.getNom());
         values.put(COLUMN_AGE, u.getAge());
         values.put(COLUMN_MDP, u.getMdp());
+        values.put(COLUMN_LANGUE, u.getLangue());
+        values.put(COLUMN_NATIONNALITE, u.getNationnalite());
+        values.put(COLUMN_SEXE, u.getSexe());
 
         db.insert(TABLE_NAME, null, values);
         db.close();
@@ -214,6 +223,12 @@ public class BDDmanager extends SQLiteOpenHelper {
         String query4 = "UPDATE utilisateur SET MDP = '"+u.getMdp()+"' WHERE EMAIL = '"+email+"'";
         db.execSQL(query4);
 
+        String query5 = "UPDATE utilisateur SET LANGUE = '"+u.getLangue()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query5);
+        String query6 = "UPDATE utilisateur SET NATIONNALITE = '"+u.getNationnalite()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query6);
+        String query7 = "UPDATE utilisateur SET SEXE = '"+u.getSexe()+"' WHERE EMAIL = '"+email+"'";
+        db.execSQL(query7);
     }
 
 
@@ -372,6 +387,10 @@ public class BDDmanager extends SQLiteOpenHelper {
         // delete the existing database
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME2);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME3);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME4);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME5);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME6);
         // call onCreate
         onCreate(db);
     }
