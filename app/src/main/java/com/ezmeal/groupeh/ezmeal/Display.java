@@ -7,6 +7,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 /**
  * Created by elthe on 22-04-17.
@@ -22,13 +23,13 @@ public class Display extends BaseActivity {
         String adremail = getIntent().getStringExtra("adremail"); //on choppe l'email qui vient de l'activité précédente (login)
         TextView tv = (TextView)findViewById(R.id.TVusername);
         tv.setText(adremail);
-
     }
 
     public void onBtnClick(View v) {
 
         if (v.getId() == R.id.bCatalogue) {
             Intent ghh = new Intent(Display.this, Catalogue.class); //changement d'activity
+            ghh.putExtra("flag", "A"); //on envoie stre dans l'activité d'arrivée
             startActivity(ghh);
         }
 

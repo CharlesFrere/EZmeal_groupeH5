@@ -320,6 +320,25 @@ public class BDDmanager extends SQLiteOpenHelper {
         return listData;
     }
 
+    //Création d'un arraylist qui contient les titres des recettes en fct des mots clefs
+    public ArrayList<String> getRecetteArrayMotClef(String motClef){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT NOMR FROM " + TABLE_NAME2 + " WHERE NOMR OR DESCRIPTION LIKE " + "'%" + motClef + "%'";
+        Cursor dataCursor = db.rawQuery(query, null);
+        //on choppe les données grâce au curseur et on les met dans une liste
+        ArrayList<String> listData = new ArrayList<>();
+        while(dataCursor.moveToNext()){
+            //choppe la valeur de la database en column
+            //et l'ajoute à l'arraylist
+            listData.add(dataCursor.getString(dataCursor.getColumnIndex(COLUMN_NOMR)));
+        }
+        dataCursor.close();
+        return listData;
+    }
+
+    //Création d'un arraylist qui contient les titres des recettes en des types et sous types
+    //à faire
+
     public ArrayList<String> getContrainteU(String util){
         SQLiteDatabase db = this.getReadableDatabase();
         String queryC = "SELECT CONTRAINTEU FROM " + TABLE_NAME3 + "WHERE EMAIL2 = " + util;

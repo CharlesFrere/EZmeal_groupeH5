@@ -45,23 +45,24 @@
                     android:textSize="22sp" />
 
                 <EditText
-                    android:id="@+id/editText2"
+                    android:id="@+id/ETmotClef"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ems="10"
+                    android:hint="Indiquez un mot clef ici"
                     android:inputType="textPersonName"
-                    android:text="Indiquez un mot clef ici"
                     android:textColor="#abaaaa"
-                    android:textSize="14sp" />
+                    android:textSize="18sp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/bMotclef"
                     style="@style/Widget.AppCompat.Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#44a7f5"
                     android:elevation="0dp"
+                    android:onClick="onBtnClick"
                     android:text="Rechercher!"
                     android:textColor="#FFFFFF" />
 
@@ -87,16 +88,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:text="Type de recette"
-                        android:textSize="18sp" />
-
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/SPtype"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
@@ -106,22 +99,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp">
 
-                    <TextView
-                        android:id="@+id/textView9"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="3dp"
-                        android:text="Sous-Type de Recette"
-                        android:textSize="18sp" />
-
                     <Spinner
-                        android:id="@+id/spinner"
+                        android:id="@+id/SPsoustype"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content" />
                 </RelativeLayout>
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/bFiltre"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
