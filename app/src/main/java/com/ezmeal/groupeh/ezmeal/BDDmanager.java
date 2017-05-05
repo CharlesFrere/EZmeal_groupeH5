@@ -336,6 +336,49 @@ public class BDDmanager extends SQLiteOpenHelper {
         return listData;
     }
 
+
+    public ArrayList<String> getRecetteArrayType(String Type , String SousType){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String query = "SELECT DISTINCT NOMR FROM " + TABLE_NAME2 + "WHERE TYPE =" + Type ;
+        Cursor dataCursor = db.rawQuery(query, null);
+        //on choppe les données grâce au curseur et on les met dans listData
+        ArrayList<String> listData = new ArrayList<>();
+        while(dataCursor.moveToNext()) {
+            listData.add(dataCursor.getString(dataCursor.getColumnIndex(COLUMN_NOMR)));
+        }
+        dataCursor.close();
+
+        if(SousType == null){
+            return listData;
+        }
+        else
+        {
+            //On prend les SousType d'une recette de la liste
+            for(int j=0;j<listData.size();j++) {
+                String query2 = "SELECT SOUSTYPE FROM " + TABLE_NAME2 + "WHERE NOMR=" + listData.get(j);
+                Cursor dataCursor2 = db.rawQuery(query2, null);
+                //Boucle pour check les SousTypes de l'utilisateur
+                    // Tant que la recette contient encore des SousTYpe, on check
+                while (dataCursor2.moveToNext()) {
+                    if(dataCursor2.getString(dataCursor.getColumnIndex(COLUMN_SOUSTYPE)) == SousType)
+                    {
+                        break;
+                    }
+                }
+                // Si on sort de la boucle car on n'obtient aucune correspondance, on retire la recette
+                if(!dataCursor.moveToNext()) {
+                    listData.remove(j);
+                }
+
+                dataCursor2.close();
+            }
+            return listData;
+        }
+    }
+
+
+
+
     //Création d'un arraylist qui contient les titres des recettes en des types et sous types
     //à faire
 

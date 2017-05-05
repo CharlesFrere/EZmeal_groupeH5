@@ -49,7 +49,9 @@ public class Catalogue extends BaseActivity {
         }
         //CAS OU ON AFFICHE LES RECETTES SUR BASE DES FILTRES
         if(flag.equals("C")) {
-            arr = b.getRecetteArray();
+            String Type = getIntent().getStringExtra("Type"); //on choppe le type et le soustype qui vient de l'activité précédente
+            String SousType = getIntent().getStringExtra("SousType");
+            arr = b.getRecetteArrayType(Type,SousType);
         }
         //on crée un adapteur pour la liste
         //ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, arr);

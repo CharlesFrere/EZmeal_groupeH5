@@ -58,6 +58,28 @@ public class Recette extends BaseActivity {
         }
         return true;
     }
-    public void trier (String recette , int pref){
+    public ArrayList<String> trier(ArrayList<String> listRecette,ArrayList<Integer> Pourcentage )
+    {
+        ArrayList<String> RecetteTrier = new ArrayList<>();
+        String Rec = null;
+        int j =-100;
+        int count = 0;
+
+            for(String s :listRecette)
+            {
+                for(int i=0;i<Pourcentage.size();i++)
+                {
+                    if(Pourcentage.get(i)<j)
+                    {
+                        Rec=s;
+                        count=i;
+                    }
+                }
+                RecetteTrier.add(Rec);
+                listRecette.remove(count);
+                Pourcentage.remove(count);
+            }
+        return RecetteTrier;
     }
+
 }

@@ -6,7 +6,7 @@
 
     <string-array name="spinner1">
         <item name="Fr">Je parle Français</item>
-        <item name="En">Je parle Englais</item>
+        <item name="En">Je parle Anglais</item>
     </string-array>
 
     <string-array name="spinner2">
@@ -22,12 +22,13 @@
     </string-array>
 
     <string-array name="spinner4">
-        <item name="H">Type1</item>
-        <item name="F">Type2 (a ajouter)...</item>
+        <item name="T1">Entré</item>
+        <item name="T2">Plat</item>
+        <item name="T3">Dessert</item>
     </string-array>
 
     <string-array name="spinner5">
-        <item name="H">Sous type 1</item>
-        <item name="F">Sous type 2 (a ajouter)</item>
+        <item name="ST1">Chaud</item>
+        <item name="ST2">Froid</item>
     </string-array>
 </resources>
