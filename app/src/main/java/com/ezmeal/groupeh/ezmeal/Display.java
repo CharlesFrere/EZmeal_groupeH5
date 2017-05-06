@@ -47,9 +47,5 @@ public class Display extends BaseActivity {
             Intent g = new Intent(Display.this, Compte.class); //changement d'activity
             startActivity(g);
         }
-        if(v.getId() == R.id.bChercher){
-            Intent ghhh = new Intent(Display.this, Recette.class); //changement d'activity
-            startActivity(ghhh);
-        }
     }
 }

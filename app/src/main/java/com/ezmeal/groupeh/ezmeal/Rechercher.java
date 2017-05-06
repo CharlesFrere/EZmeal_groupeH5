@@ -34,7 +34,7 @@ public class Rechercher extends BaseActivity implements AdapterView.OnItemSelect
         spinner4.setAdapter(adapter4);
         spinner4.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) Rechercher.this);
 
-        adapter5 = ArrayAdapter.createFromResource(this, R.array.spinner4, android.R.layout.simple_spinner_dropdown_item);
+        adapter5 = ArrayAdapter.createFromResource(this, R.array.spinner5, android.R.layout.simple_spinner_dropdown_item);
         spinner5 = (Spinner) findViewById(R.id.SPsoustype);
         spinner5.setAdapter(adapter5);
         spinner5.setOnItemSelectedListener((AdapterView.OnItemSelectedListener) Rechercher.this);
@@ -73,7 +73,7 @@ public class Rechercher extends BaseActivity implements AdapterView.OnItemSelect
             startActivity(gh);
         }
         if (v.getId() == R.id.bFiltre) {
-            Recette r = new Recette();
+
             Intent gh = new Intent(Rechercher.this, Catalogue.class); //changement d'activity
 
             String typestr = spinner4.getItemAtPosition(spinner4.getSelectedItemPosition()).toString();
