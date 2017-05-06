@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 public class Recette extends BaseActivity {
 
-    public ArrayList<ArrayList> getBon (ArrayList<String> list) {
+    public  ArrayList<ArrayList> getBon (ArrayList<String> list) {
         ArrayList<ArrayList> are = new ArrayList<>();
         ArrayList<String> nom = new ArrayList<>();
         ArrayList<Integer> pourcentage = new ArrayList<>();
@@ -58,27 +58,23 @@ public class Recette extends BaseActivity {
         }
         return true;
     }
-    public ArrayList<String> trier(ArrayList<String> listRecette,ArrayList<Integer> Pourcentage )
-    {
+    public ArrayList<String> trier(ArrayList<String> listRecette ) {
+        ArrayList<ArrayList> are = getBon(listRecette);
         ArrayList<String> RecetteTrier = new ArrayList<>();
-        String Rec = null;
-        int j =-100;
+        Integer j = -100;
         int count = 0;
 
-            for(String s :listRecette)
-            {
-                for(int i=0;i<Pourcentage.size();i++)
-                {
-                    if(Pourcentage.get(i)<j)
-                    {
-                        Rec=s;
-                        count=i;
-                    }
+        while (!are.get(0).isEmpty()) {
+            for (int i = 0; i < are.get(1).size(); i++) {
+                if ((Integer)are.get(1).get(i) > j) {
+                    count = i;
+                    j = (Integer) are.get(1).get(i);
                 }
-                RecetteTrier.add(Rec);
-                listRecette.remove(count);
-                Pourcentage.remove(count);
             }
+            RecetteTrier.add(are.get(0).get(count).toString());
+            are.get(0).remove(count);
+            are.get(1).remove(count);
+        }
         return RecetteTrier;
     }
 
