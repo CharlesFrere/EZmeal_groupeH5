@@ -111,6 +111,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:backgroundTint="#44a7f5"
+                    android:onClick="onBtnClick"
                     android:text="Rechercher!"
                     android:textColor="#FFFFFF" />
 

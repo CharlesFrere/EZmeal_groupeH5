@@ -22,13 +22,13 @@
     </string-array>
 
     <string-array name="spinner4">
-        <item name="T1">Entré</item>
-        <item name="T2">Plat</item>
+        <item name="T1">Entrée</item>
+        <item name="T2">plat</item>
         <item name="T3">Dessert</item>
     </string-array>
 
     <string-array name="spinner5">
-        <item name="ST1">Chaud</item>
+        <item name="ST1">chaud</item>
         <item name="ST2">Froid</item>
     </string-array>
 </resources>
