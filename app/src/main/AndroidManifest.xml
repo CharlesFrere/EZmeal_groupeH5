@@ -21,6 +21,7 @@
         <activity android:name=".Compte"></activity>
         <activity android:name=".Catalogue" />
         <activity android:name=".Rechercher" />
+        <activity android:name=".ChoixContraintes"/>
     </application>
 
 </manifest>

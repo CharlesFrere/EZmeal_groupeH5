@@ -47,5 +47,9 @@ public class Display extends BaseActivity {
             Intent g = new Intent(Display.this, Compte.class); //changement d'activity
             startActivity(g);
         }
+        if(v.getId() == R.id.bPreferences) {
+            Intent ghhhq = new Intent(Display.this, ChoixContraintes.class); //changement d'activity
+            startActivity(ghhhq);
+        }
     }
 }
