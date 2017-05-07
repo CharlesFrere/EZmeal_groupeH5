@@ -64,9 +64,12 @@ public class ChoixContraintes extends BaseActivity{
 
             String contr = contrainte.getText().toString();
 
+            // comment enregister les contraintes ? aller chercher le User uMod de Compte ?
 
-
-
+            User user = new User();
+            user.setContraintes(contr);
+            user.setPreferences(pref1,pref2,pref3);
+            user.setIndésirés(ind1,ind2,ind3);
 
             Intent azerty = new Intent(ChoixContraintes.this, Display.class);
             startActivity(azerty);
