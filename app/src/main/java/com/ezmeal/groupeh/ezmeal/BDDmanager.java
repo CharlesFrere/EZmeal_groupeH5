@@ -366,6 +366,42 @@ public class BDDmanager extends SQLiteOpenHelper {
         }
     }
 
+    public void insertGout(ArrayList<String> Aliment){
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        // db.delete(Table_NAME6, ... ,...)
+        for(int i=0;i<3;i++){
+            String a =Aliment.get(i);
+            if(a != "") {
+
+                values.put(COLUMN_ALIMENT3, Aliment.get(i));
+                //values.put(COLUMN_EMAIL3, getEmails);       // comment récuper l'email de l'utilisateur actuelle ?
+                values.put(COLUMN_GOUT, 1);
+                db.insert(TABLE_NAME6, null, values);
+            }
+
+        }
+        for(int j =3;j<6;j++){
+            if(Aliment.get(j) != "") {
+                values.put(COLUMN_ALIMENT3, Aliment.get(j));
+                //values.put(COLUMN_EMAIL3, u.getEmail());
+                values.put(COLUMN_GOUT, -1);
+                db.insert(TABLE_NAME6, null, values);
+
+            }
+        }
+    }
+    public void insertUserContrainte(User u,ArrayList<String> ContrainteU) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query;
+        //db.delete(TABLE_NAME3,"EMAIL =" +)
+        for(int i=0;i<ContrainteU.size();i++) {
+            query = "INSERT INTO " + TABLE_NAME3 + " VALUES " + "(" + u+ "," + ContrainteU.get(i) + ")";
+            db.execSQL(query);
+        }
+    }
+
 
 
     public ArrayList<String> getContrainteU(String util){

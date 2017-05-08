@@ -1,5 +1,7 @@
 package com.ezmeal.groupeh.ezmeal;
 
+import java.util.ArrayList;
+
 /**
  * Created by elthe on 23-04-17.
  */
@@ -7,7 +9,7 @@ package com.ezmeal.groupeh.ezmeal;
 public class User {
 
     String prenom, nom, email, mdp, age, langue, nationnalite, sexe;
-    String contrainte;
+    ArrayList<String> contrainte;
     String préférence1, préférence2, préférence3;
     String indésiré1, indésiré2, indésiré3;
 
@@ -75,8 +77,9 @@ public class User {
         return age;
     }
 
-    public void setContraintes(String contrainte){
-        this.contrainte = contrainte;
+    public void setContraintes(ArrayList<String> contrainte)
+    {
+            this.contrainte = contrainte;
     }
 
     public void setPreferences(String pref1, String pref2, String pref3){
@@ -89,5 +92,31 @@ public class User {
         this.indésiré1 = indésiré1;
         this.indésiré2 = indésiré2;
         this.indésiré3 = indésiré3;
+    }
+    public ArrayList<String> getContraintes() {
+        return contrainte;
+    }
+    public String getPréférence1(){
+        return préférence1;
+    }
+
+    public String getPréférence2() {
+        return préférence2;
+    }
+
+    public String getPréférence3() {
+        return préférence3;
+    }
+
+    public String getIndésiré1() {
+        return indésiré1;
+    }
+
+    public String getIndésiré2() {
+        return indésiré2;
+    }
+
+    public String getIndésiré3() {
+        return indésiré3;
     }
 }

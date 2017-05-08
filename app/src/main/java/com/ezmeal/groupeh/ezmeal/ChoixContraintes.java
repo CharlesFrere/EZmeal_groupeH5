@@ -9,6 +9,17 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import java.util.ArrayList;
+import android.app.Activity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
+import android.widget.Toast;
+import android.widget.ListView;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -18,29 +29,18 @@ import java.util.ArrayList;
  */
 
 public class ChoixContraintes extends BaseActivity{
+
+    BDDmanager myManager = new BDDmanager(this);
     //String contrainte;
     //String préférence1, préférence2, préférence3;
     //String indésiré1, indésiré2, indésiré3;
-    ArrayList<String> selectedItems = new ArrayList<>();
+    ArrayList<String> selectedItems;
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.choix_contraintes);
-        ListView ch1 = (ListView)findViewById(R.id.checkable_list);
-        ch1.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-        String[] items = {"Musulman","Juif","Végétarien","Vegan"};
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.checkable_list);
-        ch1.setAdapter(adapter);
-        ch1.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = ((TextView)view).getText().toString();
-                if(selectedItems.contains(selectedItem)){
-                    selectedItems.remove(selectedItem);
-                }
-                else
-                    selectedItems.add(selectedItem);
-            }
-        });
+        selectedItems=new ArrayList<String>();
+
 
     }
 
@@ -51,6 +51,31 @@ public class ChoixContraintes extends BaseActivity{
         }
         Toast.makeText(this, "Vous avez choisi vos contraintes \n"+items,Toast.LENGTH_LONG).show();
 
+    }
+
+    public void onStart(){
+        super.onStart();
+        //create an instance of ListView
+        ListView chl=(ListView) findViewById(R.id.checkable_list);
+        //set multiple selection mode
+        chl.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+        String[] items={"lactose","halal","cachère","végétatien"};
+        //supply data itmes to ListView
+        ArrayAdapter<String> aa=new ArrayAdapter<String>(this,R.layout.checkable_list,R.id.txt_title,items);
+        chl.setAdapter(aa);
+        //set OnItemClickListener
+        chl.setOnItemClickListener(new OnItemClickListener(){
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // selected item
+                String selectedItem = ((TextView) view).getText().toString();
+                if(selectedItems.contains(selectedItem))
+                    selectedItems.remove(selectedItem); //remove deselected item from the list of selected items
+                else
+                    selectedItems.add(selectedItem); //add selected item to the list of selected items
+
+            }
+
+        });
     }
 
 
@@ -73,7 +98,9 @@ public class ChoixContraintes extends BaseActivity{
     */
 
     public void onBtnClick(View v) {
-        if (v.getId() == R.id.buttonEnr) {
+        if (v.getId() == R.id.buttonChoix) {
+
+
 
             TextView preference1 = (EditText) findViewById(R.id.editText3);
             TextView preference2 = (EditText) findViewById(R.id.editText2);
@@ -83,7 +110,7 @@ public class ChoixContraintes extends BaseActivity{
             TextView indesire2 = (EditText) findViewById(R.id.editText6);
             TextView indesire3 = (EditText) findViewById(R.id.editText5);
 
-            //TextView contrainte = (EditText) findViewById(R.id.liste_contraintes);
+
 
 
             String pref1 = preference1.getText().toString();
@@ -94,14 +121,27 @@ public class ChoixContraintes extends BaseActivity{
             String ind2 = indesire2.getText().toString();
             String ind3 = indesire3.getText().toString();
 
-            //String contr = contrainte.getText().toString();
+
+
+
 
             // comment enregister les contraintes ? aller chercher le User uMod de Compte ?
+            BDDmanager b = new BDDmanager(this);
 
-            User user = new User();
-            //user.setContraintes(contr);
-            user.setPreferences(pref1,pref2,pref3);
-            user.setIndésirés(ind1,ind2,ind3);
+            ArrayList<String> gout = new ArrayList<>();
+            gout.add(0,pref1);
+            gout.add(1,pref2);
+            gout.add(2,pref3);
+            gout.add(3,ind1);
+            gout.add(4,ind2);
+            gout.add(5,ind3);
+            // b.insertGout(gout);
+
+           // b.insertUserContrainte(selectedItems);
+
+
+            //user.setPreferences(pref1,pref2,pref3);
+            //user.setIndésirés(ind1,ind2,ind3);
 
             Intent azerty = new Intent(ChoixContraintes.this, Display.class);
             startActivity(azerty);
