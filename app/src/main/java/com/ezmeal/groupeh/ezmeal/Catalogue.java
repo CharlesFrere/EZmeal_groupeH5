@@ -1,6 +1,8 @@
 package com.ezmeal.groupeh.ezmeal;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -36,10 +38,13 @@ public class Catalogue extends BaseActivity {
         BDDmanager b = new BDDmanager(this);
         ArrayList arr = new ArrayList();
 
+        SharedPreferences sharedInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+        String emailDeUser = sharedInfo.getString("userEmail", "userEmail not found");
+
         String flag = getIntent().getStringExtra("flag"); //on choppe la lettre qui vient de l'activité précédente
         //CAS OU ON AFFICHE TOUTES LES RECETTES
         if(flag.equals("A")) {
-            arr = b.getRecetteArray();
+            arr = b.getRecetteArray(emailDeUser);
         }
         //CAS OU ON AFFICHE LES RECETTES SUR BASE DES MOTS CLEFS
         if(flag.equals("B")) {

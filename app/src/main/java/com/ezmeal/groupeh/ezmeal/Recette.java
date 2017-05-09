@@ -1,5 +1,7 @@
 package com.ezmeal.groupeh.ezmeal;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -13,28 +15,33 @@ import java.util.ArrayList;
 
 public class Recette extends BaseActivity {
 
-    public  ArrayList<ArrayList> getBon (ArrayList<String> list) {
+    BDDmanager c = new BDDmanager(this);
+
+    public  ArrayList<ArrayList> getBon (String emailDeUser,ArrayList<String> list) {
         ArrayList<ArrayList> are = new ArrayList<>();
         ArrayList<String> nom = new ArrayList<>();
         ArrayList<Integer> pourcentage = new ArrayList<>();
         are.add(nom);
         are.add(pourcentage);
-        BDDmanager c = new BDDmanager(this);
+
         ArrayList<String> zar = new ArrayList();
         int check = 0 ;
         int nombre = 0 ;
         int preference = 0 ;
 
+
+
         for (int x = 0 ; x < list.size() ; x++ ) {
+            String a=list.get(x);
             zar = c.getAliment(list.get(x));
             check = 0;
             preference = 0;
             nombre = 0;
             for(int t = 0 ; t < zar.size() && check==0; t++){
-                if (getContrainte(c.getContrainteA(zar.get(t)), c.getContrainteU("hasard") ) == false ){
+                if (getContrainte(c.getContrainteA(zar.get(t)), c.getContrainteU(emailDeUser) ) == false ){
                    check++;
                 }
-                preference = preference + c.getPref(zar.get(t),"hasard").get(0);
+                preference = preference + c.getPref(zar.get(t),emailDeUser).get(0);
                 nombre++;
             }
             if (check == 0){
@@ -58,8 +65,8 @@ public class Recette extends BaseActivity {
         }
         return true;
     }
-    public ArrayList<String> trier(ArrayList<String> listRecette ) {
-        ArrayList<ArrayList> are = getBon(listRecette);
+    public ArrayList<String> trier(String u,ArrayList<String> listRecette ) {
+        ArrayList<ArrayList> are = getBon(u,listRecette);
         ArrayList<String> RecetteTrier = new ArrayList<>();
         Integer j = -100;
         int count = 0;

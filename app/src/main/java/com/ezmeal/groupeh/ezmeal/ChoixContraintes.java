@@ -21,6 +21,22 @@ import android.widget.Toast;
 import android.widget.ListView;
 import android.view.View;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.support.v7.app.AppCompatActivity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 
@@ -123,11 +139,6 @@ public class ChoixContraintes extends BaseActivity{
 
 
 
-
-
-            // comment enregister les contraintes ? aller chercher le User uMod de Compte ?
-            BDDmanager b = new BDDmanager(this);
-
             ArrayList<String> gout = new ArrayList<>();
             gout.add(0,pref1);
             gout.add(1,pref2);
@@ -136,6 +147,11 @@ public class ChoixContraintes extends BaseActivity{
             gout.add(4,ind2);
             gout.add(5,ind3);
             // b.insertGout(gout);
+            SharedPreferences sharedInfo = getSharedPreferences("userInfo", Context.MODE_PRIVATE);
+            String emailDeUser = sharedInfo.getString("userEmail", "userEmail not found");
+
+            myManager.insertGout(emailDeUser,gout);
+            myManager.insertUserContrainte(emailDeUser,selectedItems);
 
            // b.insertUserContrainte(selectedItems);
 
